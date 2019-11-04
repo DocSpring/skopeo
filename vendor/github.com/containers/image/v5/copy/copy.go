@@ -578,6 +578,8 @@ func (c *copier) copyOneImage(ctx context.Context, policyContext *signature.Poli
 	// if err := ic.copyLayers(ctx); err != nil {
 	// 	return nil, "", "", err
 	// }
+	// Try copying layers. Ignore any errors (e.g. if a layer isn't found.)
+	ic.copyLayers(ctx)
 
 	// With docker/distribution registries we do not know whether the registry accepts schema2 or schema1 only;
 	// and at least with the OpenShift registry "acceptschema2" option, there is no way to detect the support
